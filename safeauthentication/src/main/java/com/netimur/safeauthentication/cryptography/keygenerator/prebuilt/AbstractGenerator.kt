@@ -1,4 +1,4 @@
-package com.netimur.safeauthentication.cryptography.keygenerator
+package com.netimur.safeauthentication.cryptography.keygenerator.prebuilt
 
 import android.security.keystore.KeyProperties
 import java.security.NoSuchProviderException

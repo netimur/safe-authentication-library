@@ -1,4 +1,4 @@
-package com.netimur.safeauthentication.cryptography.keygenerator
+package com.netimur.safeauthentication.cryptography.keygenerator.prebuilt
 
 import com.netimur.safeauthentication.cryptography.keygenerator.*
 

@@ -1,0 +1,3 @@
+package com.netimur.safeauthentication.cryptography.cipher
+
+interface SafeAuthCipherRepository : CipherRepository, AuthorizedCipherRepository

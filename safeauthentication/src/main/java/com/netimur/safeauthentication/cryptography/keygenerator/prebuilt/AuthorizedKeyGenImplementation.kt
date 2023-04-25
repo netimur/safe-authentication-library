@@ -1,8 +1,7 @@
-package com.netimur.safeauthentication.cryptography.keygenerator
+package com.netimur.safeauthentication.cryptography.keygenerator.prebuilt
 
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
-import com.netimur.safeauthentication.cryptography.keygenerator.AbstractGenerator
 import com.netimur.safeauthentication.cryptography.keygenerator.AuthorizedKeyGenerator
 import javax.crypto.SecretKey
 
