@@ -1,0 +1,3 @@
+package com.netimur.safeauthentication.cryptography.secretkey
+
+interface SafeAuthKeyRepository:AuthorizedKeyRepository, KeyRepository

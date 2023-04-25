@@ -3,12 +3,12 @@ package com.netimur.safeauthentication.cryptography.cipher
 import android.os.Build
 import android.security.keystore.KeyProperties
 import androidx.annotation.RequiresApi
-import com.netimur.safeauthentication.cryptography.secretkey.AndroidSecretKeyRepository
+import com.netimur.safeauthentication.cryptography.secretkey.SafeAuthKeyRepository
 import javax.crypto.Cipher
 import javax.crypto.spec.IvParameterSpec
 
 class CipherRepositoryImplementation(
-    private val androidSecretKeyRepository: AndroidSecretKeyRepository
+    private val keyRepository: SafeAuthKeyRepository
 ) :
     AndroidCipherRepository {
     companion object {
@@ -22,28 +22,28 @@ class CipherRepositoryImplementation(
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun getAuthorizedEncryptionCipher(keyAlias: String): Cipher {
-        val secretKey = androidSecretKeyRepository.getAuthorizedKey(keyAlias)
+        val secretKey = keyRepository.getAuthorizedKey(keyAlias)
         val cipher: Cipher = Cipher.getInstance(TRANSFORMATION)
         cipher.init(ENCRYPT_MODE, secretKey)
         return cipher
     }
 
     override fun getAuthorizedDecryptionCipher(keyAlias: String, iv: ByteArray): Cipher {
-        val secretKey = androidSecretKeyRepository.getAuthorizedKey(keyAlias)
+        val secretKey = keyRepository.getAuthorizedKey(keyAlias)
         val cipher: Cipher = Cipher.getInstance(TRANSFORMATION)
         cipher.init(DECRYPT_MODE, secretKey, IvParameterSpec(iv))
         return cipher
     }
 
     override fun getEncryptionCipher(keyAlias: String): Cipher {
-        val authorizedKey = androidSecretKeyRepository.getSecretKey(keyAlias)
+        val authorizedKey = keyRepository.getSecretKey(keyAlias)
         val cipher = Cipher.getInstance(TRANSFORMATION)
         cipher.init(ENCRYPT_MODE, authorizedKey)
         return cipher
     }
 
     override fun getDecryptionCipher(keyAlias: String, iv: ByteArray): Cipher {
-        val authorizedKey = androidSecretKeyRepository.getSecretKey(keyAlias)
+        val authorizedKey = keyRepository.getSecretKey(keyAlias)
         val cipher = Cipher.getInstance(TRANSFORMATION)
         cipher.init(DECRYPT_MODE, authorizedKey, IvParameterSpec(iv))
         return cipher
