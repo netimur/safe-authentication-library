@@ -4,7 +4,7 @@ import com.netimur.safeauthentication.cryptography.keygenerator.prebuilt.SafeAut
 import com.netimur.safeauthentication.cryptography.keygenerator.SafeAuthKeyGenerator
 import com.netimur.safeauthentication.cryptography.keystore.AndroidKeystore
 import com.netimur.safeauthentication.cryptography.keystore.Keystore
-import com.netimur.safeauthentication.cryptography.secretkey.AuthorizedKeyRepository
+import com.netimur.safeauthentication.cryptography.secretkey.AuthorizationRequiredKeyRepository
 import com.netimur.safeauthentication.cryptography.secretkey.KeyRepository
 import com.netimur.safeauthentication.cryptography.secretkey.SafeAuthKeyRepository
 
@@ -13,5 +13,5 @@ class SafeAuthKeyRepositoryImplementation(
     keygen: SafeAuthKeyGenerator = SafeAuthKeyGenImplementation()
 ) :
     SafeAuthKeyRepository,
-    AuthorizedKeyRepository by AuthorizedKeyRepositoryImplementation(keystore, keygen),
+    AuthorizationRequiredKeyRepository by AuthorizationRequiredKeyRepositoryImplementation(keystore, keygen),
     KeyRepository by KeyRepositoryImplementation(keystore, keygen)

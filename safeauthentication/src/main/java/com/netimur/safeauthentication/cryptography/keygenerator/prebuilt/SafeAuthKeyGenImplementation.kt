@@ -5,4 +5,4 @@ import com.netimur.safeauthentication.cryptography.keygenerator.*
 class SafeAuthKeyGenImplementation :
     SafeAuthKeyGenerator,
     KeyGenerator by KeyGenImplementation(),
-    AuthorizedKeyGenerator by AuthorizedKeyGenImplementation()
+    AuthorizationRequiredKeyGenerator by AuthorizationRequiredKeyGenImplementation()
